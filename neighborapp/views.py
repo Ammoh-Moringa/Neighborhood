@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from neighborapp.form import SignUpForm
+from django.shortcuts import render,redirect
+from django.contrib.auth import login, authenticate
 
 # Create your views here.
 def index(request):
