@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'neighborapp.app.NeighborappConfig',
+    'neighborapp.apps.NeighborappConfig',
     'bootstrap4',
     'cloudinary',
     'rest_framework',
