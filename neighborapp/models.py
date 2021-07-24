@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import  User
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Neighbourhood(models.Model):
     neighbourhood_name = models.CharField(max_length=60,blank=False)
     neighbourhood_location = models.CharField(max_length=60,blank=False)
     occupants_count = models.IntegerField()
+    profile_picture = CloudinaryField('image')
     admin = models.ForeignKey(User, on_delete=models.CASCADE, related_name='neighbor')
 
     def __str__(self):
@@ -39,7 +41,7 @@ class Profile(models.Model):
     nieghborhood_name = models.CharField(max_length=80, blank=True)
     location = models.CharField(max_length=50, blank=True, null=True)
     bio = models.TextField(max_length=254, blank=True)
-    profile_picture = models.ImageField(upload_to='images/', default='default.png')
+    profile_picture = CloudinaryField('image')
     neighbourhood_id = models.ForeignKey(Neighbourhood, on_delete=models.SET_NULL, null=True, related_name='members', blank=True)
 
     def __str__(self):

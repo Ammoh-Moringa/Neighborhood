@@ -1,11 +1,11 @@
-{% extends 'base.html'%}
+{%base.html'%}
 {% block content %}
 <body style=" background-image: url('https://cdn.pixabay.com/photo/2016/04/25/23/30/home-1353389__340.jpg');
 background-size: cover;
 background-repeat:  no-repeat;
 font-family: 'Comic Sans MS', cursive, sans-serif;">
     <div class="container-fluid">
-        <form class="form-inline d-flex justify-content-center md-form form-sm active-green-2 mt-2" action="" method="get">
+        <form class="form-inline d-flex justify-content-center md-form form-sm active-green-2 mt-2" action="{% url 'search' %}" method="get">
             <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search Business" aria-label="Search" name="title">
             <button class="btn btn-outline bg-light btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search text-success" aria-hidden="true"></i></button>
         </form>
@@ -21,7 +21,7 @@ font-family: 'Comic Sans MS', cursive, sans-serif;">
                     <div class="col-lg-6 col-md-12 mb-4">
                         <div class="single-news">
                             <div class="view overlay rounded z-depth-1-half mb-4">
-                                <img src="{{ neighbourhood.profile_picture.url }}" class="card-img-top" alt="{{ neighbourhood.name }}" height="300px">
+                                <img src="{{ neighbourhood.profile_picture }}" class="card-img-top" alt="{{ neighbourhood.name }}" height="300px">
                                 <a>
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
@@ -52,10 +52,10 @@ font-family: 'Comic Sans MS', cursive, sans-serif;">
                             <div class="news-data d-flex justify-content-between">
                                 {% if request.user.profile.neighbourhood == neighbourhood %}
                                 <h6 class="exit">
-                                    <a href="/" class="btn btn-outline-danger btn-sm mb-2">Leave Neighbourhood</a>
+                                    <a href="{% url 'leave-hood' neighbourhood.id %}" class="btn btn-outline-danger btn-sm mb-2">Leave Neighbourhood</a>
                                 </h6>
                                 <p class="font-weight-bold white-text">
-                                    <a href="/" class="btn btn-outline-success btn-sm">Explore {{user.profile.neighbourhood.name}} Estate</a>
+                                    <a href="{% url 'single-hood' user.profile.neighbourhood.id %}" class="btn btn-outline-success btn-sm">Explore {{user.profile.neighbourhood.name}} Estate</a>
                                 </p>
                                 {% elif not request.user.profile.neighbourhood %}
                                 <a href="{% url 'join-hood' neighbourhood.id %}" class="btn btn-success btn-sm">Join Neighbourhood</a>
@@ -69,4 +69,4 @@ font-family: 'Comic Sans MS', cursive, sans-serif;">
         </section>
     </div>
 </body>
-{% endblock %}
+{% endblock %
