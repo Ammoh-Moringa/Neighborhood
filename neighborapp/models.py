@@ -42,12 +42,42 @@ class Profile(models.Model):
     profile_picture = models.ImageField(upload_to='images/', default='default.png')
     neighbourhood_id = models.ForeignKey(Neighbourhood, on_delete=models.SET_NULL, null=True, related_name='members', blank=True)
 
+    def __str__(self):
+        return self.user
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
 #class Bussiness
 class Bussiness(models.Model):
      business_user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
      name = models.CharField(max_length=120)
      business_email = models.EmailField(max_length=254)
      neighbourhood_id = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='business')
+
+     def __str__(self):
+        return f'{self.name}Business'
+
+     def save_business(self):
+        self.save()
+
+     def create_business(self):
+            self.save()
+
+     def delete_business(self):
+        self.delete()
+
+     @classmethod
+     def find_business(cls,business_id):
+        business = cls.objects.get(id = business_id)
+        return business
+
+     def update_business(self):
+        name = self.name
+        self.name = name
     
 
    
