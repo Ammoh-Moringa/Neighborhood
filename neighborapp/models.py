@@ -27,6 +27,10 @@ class Neighbourhood(models.Model):
         new_count = occupation.occupation_count + 1
         cls.objects.filter(id = neighbourhood_id).update(occupation_count = new_count)
 
+    def update_neighborhood(self):
+        name = self.name
+        self.name = name
+
 
 
 #class profile
