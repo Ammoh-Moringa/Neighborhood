@@ -8,6 +8,25 @@ class Neighbourhood(models.Model):
     occupants_count = models.IntegerField()
     admin = models.ForeignKey(User, on_delete=models.CASCADE, related_name='neighbor')
 
+    def __str__(self):
+        return f'{self.neighbourhood_name} neighbor'
+
+    def create_neighborhood(self):
+        self.save()
+
+    def delete_neighborhood(self):
+        self.delete()
+
+    @classmethod
+    def find_neighborhood(cls, neighborhood_id):
+        return cls.objects.filter(id=neighborhood_id)
+
+    @classmethod
+    def update_occupants(cls,neighbourhood_id):
+        occupation = cls.objects.get(id=neighbourhood_id)
+        new_count = occupation.occupation_count + 1
+        cls.objects.filter(id = neighbourhood_id).update(occupation_count = new_count)
+
 
 
 #class profile
