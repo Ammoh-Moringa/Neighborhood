@@ -1,4 +1,4 @@
-from neighborapp.models import Neighbourhood, Profile
+from neighborapp.models import Bussiness, Neighbourhood, Profile
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -32,4 +32,10 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username','email']
+
+
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Bussiness
+        exclude = ('user', 'neighbourhood')
         
