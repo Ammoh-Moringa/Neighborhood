@@ -88,9 +88,9 @@ def join_neighbourhood(request, id):
 @login_required(login_url='/accounts/login/')
 def single_neighbourhood(request, hood_id):
     neighbourhood = Neighbourhood.objects.get(id=hood_id)
-    business = Bussiness.objects.filter(neighbourhood=neighbourhood)
+    # business = Bussiness.objects.filter(neighbourhood=neighbourhood)
     posts = Post.objects.filter(neighbourhood=neighbourhood)
-    posts = posts[::-1]
+    # posts = posts[::-1]
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         if form.is_valid():
@@ -103,7 +103,6 @@ def single_neighbourhood(request, hood_id):
         form = BusinessForm()
     context = {
         'neighbourhood': neighbourhood,
-        'business': business,
         'form': form,
         'posts': posts
     }
@@ -116,4 +115,5 @@ def leave_neighbourhood(request, id):
     request.user.profile.save()
     messages.success(
         request, 'Success! You have succesfully exited this Neighbourhood ')
-    return redirect('neighbourhood')
+    return redirect('index')
+
