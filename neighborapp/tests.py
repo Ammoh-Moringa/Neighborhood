@@ -29,3 +29,32 @@ class ProfileTestClass(TestCase):
    self.assertTrue(len(testsaved) > 0)
 
 
+
+class NeighbourhoodTestClass(TestCase):
+#Set up Method
+  def setUp(self):
+  
+   self.user = User(username='Amos')
+   self.user.save()
+   self.neighbourhood = Neighbourhood(neighbourhood_name='Rosya',neighbourhood_location='Nairobi',neighbourhood_description="hood of hoods",neighbourhood_photo='photo.url',admin = self.user)
+   self.neighbourhood.create_neighbourhood()
+
+
+  def tearDown(self):
+    Neighbourhood.objects.all().delete()
+
+  def test_instance(self):
+    self.assertTrue(isinstance(self.neighbourhood,Neighbourhood))
+
+  def test_create_neighborhood(self):
+    self.neighbourhood.create_neighbourhood()
+    hoods = Neighbourhood.objects.all()
+    self.assertTrue(len(hoods) > 0)
+
+  def test_delete_neighborhood(self):
+   self.neighbourhood.create_neighbourhood()
+   self.neighbourhood.delete_neighbourhood()
+   hood = Neighbourhood.objects.all()
+   self.assertTrue(len(hood) == 0)
+
+
