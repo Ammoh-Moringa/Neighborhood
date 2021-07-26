@@ -69,4 +69,4 @@ The project is under the [MIT](licence) license.
 
 ### live site
 
-View [live](https://diamondawards.herokuapp.com/)
+View [live](https://hoodtown8.herokuapp.com/)
