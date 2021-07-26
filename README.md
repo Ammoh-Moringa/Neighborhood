@@ -5,7 +5,7 @@
 Amos Kiprotich
 
 ### Description
-The Awards(DIAMONAWWWARDS) is a django appliction which is basically a clone of the Awwwards.It allows users to post a project where the project is reviewed by other users using the application.
+Neighborhood(HoodTown) is a django application. It is a neighborhood watch which helps the community in identifying various neighborhoods,, it helps also in identifying various departments easily, for example,, Police department and Hospital Departments.
 
 ## SetUp and Installations
 
