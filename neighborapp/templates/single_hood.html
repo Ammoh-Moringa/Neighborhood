@@ -78,27 +78,24 @@ font-family: 'Special Elite', cursive;">>
               </div>
             </div>
           </div>
-          <div class="modal fade" id="Business" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
+          <div class="modal fade" id="Business" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"style="font-family: 'Special Elite', cursive; background-image: url(https://images.unsplash.com/photo-1490197415175-074fd86b1fcc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80);
+          background-size: cover;
+          background-repeat:  no-repeat;">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title text-white" id="exampleModalCenterTitle" style="text-align: center">
+                  <h5 class="modal-title text-white"  style="text-align: center">
                     New Business
                   </h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"> <i class="fa fa-times-circle text-success"></i></span>
+                    <span aria-hidden="true"> <i class="fa fa-times-circle text-warning"></i></span>
                   </button>
                 </div>
                 <div class="modal-body">
                   <form action="" method="post">
                     {% csrf_token%}
                     {% bootstrap_form form %}
-                    <button type="submit" class="btn btn-md btn-success">Add</button>
-                    <button type="button" class="btn btn-md btn-outline-danger " data-dismiss="modal"
-                      style="float:right">
-                      Cancel
-                    </button>
+                    <button type="submit" class="btn btn-md btn-warning">Add</button>
                   </form>
                 </div>
               </div>
