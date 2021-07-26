@@ -6,9 +6,9 @@
 {% block content %}
 
 
-        <div class="container" style="background-color:black;
+        <div class="container" style="
         margin-top: 200px;
-        color:white;
+        color:black;
         border:none;
         font-style: italic;">
 
@@ -18,32 +18,14 @@
 
              {% endif %}
             </div>
-            <div>
-                  <p style="color: white">
-
-                  username :   {{ user.username }}
-
-                  </p>
-
-            </div>
+            
+           
             <div class="panel-footer">
-                  <p style="color: white">
+              <p style="color: black">
 
-                  Bio :  {{ profile_info.bio }}
+                username :   {{ user.username }}
 
-                  </p>
-
-            </div>
-            <div class="panel-footer">
-                    {% if profile.username == user.username %}
-
-                              <p style="font-size:30px;">
-
-                                 <a class="btn btn-lg btn-info" href="/">Edit Profile</a>
-                              </p>
-                      {%endif%}
-            </div>
-            <div class="panel-footer">
+                </p>
                   <h4>
 
                     {{ profile_info.bio }}
@@ -52,9 +34,9 @@
 
             </div>
             <div class="panel-footer">
-                  <p style="color: white">
+                  <p style="color: black">
 
-                  Logged into DIAMONDAWWARDS   {{ profile_info.timestamp | timesince }} ago
+                  Logged into HOODTOWN  
 
                   </p>
 
@@ -63,38 +45,6 @@
 
     </div>
   <hr>
-  <div class="row">
-
-    {% if projects %}
-    {% if profile.username == user.username %}
-    <h2>You have {{ projects | length}} projects
-<span>
-  <a class="btn btn-info btn-block" href="/" >Add Project</a>
-
-</span>
-    </h2>
-
-    {%else%}
-    <h3>
-      This user has {{ projects | length}} projects
-    </h3>
-        {%endif%}
-    {%endif%}
-{% for project in projects %}
-
-  <div class="col-md-3">
-    <a href="{{project.link}}">
-<div class="card-body">
-<img src=" {{project.image.url}}" alt="">
-</div>
-</a>
-<div class="card-header"><p class="text-center">
-  {{project.description}}
-</p></div>
-  </div>
-
-
-    {%endfor%}
-  </div>
+  
 </div>
 {% endblock %}
