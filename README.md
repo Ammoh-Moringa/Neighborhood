@@ -5,7 +5,7 @@
 Amos Kiprotich
 
 ### Description
-Neighborhood(HoodTown) is a django application. It is a neighborhood watch which helps the community in identifying various neighborhoods,, it helps also in identifying various departments easily, for example,, Police department and Hospital Departments.
+Neighborhood(HoodTown) is a django application. It is a neighborhood watch which helps the community in identifying various neighborhoods,, it helps also in identifying various departments easily, for example,, Police department and Hospital Departments.One can also join and leave the neighborhood.
 
 ## SetUp and Installations
 
@@ -13,11 +13,11 @@ Neighborhood(HoodTown) is a django application. It is a neighborhood watch which
 ## Clone
 
 To clone the application:
-`git clone https://github.com/Ammoh-Moringa/Awards.git`
+`https://github.com/Ammoh-Moringa/Neighborhood.git`
 
 Navigate to the folder and run the following commands;
 
-`$ cd The Gallery`
+`$ cd Neighborhood`
 `$ pip install -r requirements.txt`
 
 ## Virtual environment
@@ -27,7 +27,7 @@ Navigate to the folder and run the following commands;
 
 ## Migration
 
-`$ python3.8 manage.py makemigrations awards`
+`$ python3.8 manage.py makemigrations neighborapp`
 
 ## Installing dependencies
 
@@ -39,7 +39,7 @@ Navigate to the folder and run the following commands;
 
 ## Testing the Application
 
-`$ python3.8 manage.py test Gallery`
+`$ python3.8 manage.py test neighborapp`
 
 ## Open the following host on your browser 
 `127.0.0.1:8000`
@@ -61,10 +61,7 @@ On the localhost navigate to admin where all the posts and authentications are m
 3. Git
 4. Django 3.2.5
 
-## API Endpoints
 
-* [Projects Endpoints](https://diamondawards.herokuapp.com/api/projectslist)
-* [Profiles Endpoints](https://diamondawards.herokuapp.com/api/profilelist)
 
 
 ## License
