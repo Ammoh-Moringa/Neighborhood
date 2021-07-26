@@ -7,13 +7,13 @@ from django.contrib.auth.models import User
 
 # Create your tests here.
 class ProfileTestClass(TestCase):
-# Set up method
+
  def setUp(self):
-    self.user = User(username="juma.a", password="pass123")
+    self.user = User(username="Amos", password="Amo24")
     self.user.save()
-    self.neighbourhood= Neighbourhood(hood_name = "route4", hood_location= "Eastside", admin = self.user,hood_description='mtaa yetu')
+    self.neighbourhood= Neighbourhood(hood_name = "8town", hood_location= "kibich", admin = self.user,hood_description='olympic')
     self.neighbourhood.save()
-    self.profile = Profile(bio='my hood',email='email@g.com', id_number=3677093,user = self.user, neighbourhood = self.neighbourhood)
+    self.profile = Profile(bio='my hood',email='email@g.com', idNo='678',user = self.user, neighbourhood = self.neighbourhood)
 
  def test_instance(self):
      self.assertTrue(isinstance(self.profile,Profile))
@@ -23,15 +23,9 @@ class ProfileTestClass(TestCase):
     testsaved = Profile.objects.all()
     self.assertTrue(len(testsaved) > 0)
 
- def test_get_profile(self):
+ def test_delete_method(self):
    self.profile.save_profile()
-   profile = Profile.get_profile()
-   self.assertTrue(len(profile) > 0)
-
-
-def test_delete_method(self):
-  self.profile.save_profile()
-  testsaved = Profile.objects.all()
-  self.assertTrue(len(testsaved) > 0)
+   testsaved = Profile.objects.all()
+   self.assertTrue(len(testsaved) > 0)
 
 
