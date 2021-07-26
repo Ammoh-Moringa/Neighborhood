@@ -84,16 +84,8 @@ class Bussiness(models.Model):
 
 
 class Post(models.Model):
-    CHOICES = (
-        ('1', 'Crimes and Safety'),
-        ('2', 'Health Emergency'),
-        ('3', 'Recommendations'),
-        ('4', 'Fire Breakouts'),
-        ('5', 'Lost and Found'),
-        ('6', 'Death'),
-        ('7', 'Event'),
-    )
-    category = models.CharField(max_length=120, choices=CHOICES)
+    
+    category = models.CharField(max_length=120)
     title = models.CharField(max_length=100, null=True)
     post = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
