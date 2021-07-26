@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from django.test import TestCase
-from .models import Neighbourhood, Profile
+from .models import Bussiness, Neighbourhood, Profile
 from django.contrib.auth.models import User
 
 
@@ -13,7 +13,7 @@ class ProfileTestClass(TestCase):
     self.user.save()
     self.neighbourhood= Neighbourhood(hood_name = "8town", hood_location= "kibich", admin = self.user,hood_description='olympic')
     self.neighbourhood.save()
-    self.profile = Profile(bio='my hood',email='email@g.com', idNo='678',user = self.user, neighbourhood = self.neighbourhood)
+    self.profile = Profile(bio='my hood',email='kipro@gmail.com', idNo='678',user = self.user, neighbourhood = self.neighbourhood)
 
  def test_instance(self):
      self.assertTrue(isinstance(self.profile,Profile))
@@ -36,8 +36,8 @@ class NeighbourhoodTestClass(TestCase):
   
    self.user = User(username='Amos')
    self.user.save()
-   self.neighbourhood = Neighbourhood(neighbourhood_name='Rosya',neighbourhood_location='Nairobi',neighbourhood_description="hood of hoods",neighbourhood_photo='photo.url',admin = self.user)
-   self.neighbourhood.create_neighbourhood()
+   self.neighbourhood = Neighbourhood(hood_name='Rosya',hood_location='Nairobi',hood_description="hood of hoods",hood_photo='photo.url',admin = self.user)
+   self.neighbourhood.save_hood()
 
 
   def tearDown(self):
@@ -47,14 +47,34 @@ class NeighbourhoodTestClass(TestCase):
     self.assertTrue(isinstance(self.neighbourhood,Neighbourhood))
 
   def test_create_neighborhood(self):
-    self.neighbourhood.create_neighbourhood()
+    self.neighbourhood.save_hood()
     hoods = Neighbourhood.objects.all()
     self.assertTrue(len(hoods) > 0)
 
   def test_delete_neighborhood(self):
-   self.neighbourhood.create_neighbourhood()
-   self.neighbourhood.delete_neighbourhood()
+   self.neighbourhood.save_hood()
+   self.neighbourhood.delete_hood()
    hood = Neighbourhood.objects.all()
    self.assertTrue(len(hood) == 0)
 
+
+class BusinessTestClass(TestCase):
+    # Set up method
+
+    def setUp(self):
+
+        self.user = User(username="Amos", password="Amos24")
+        self.user.save()
+        self.neighbourhood = Neighbourhood(
+            hood_name="Roysa", hood_location="Nairobi", admin=self.user, hood_description='hood of hoods')
+        self.neighbourhood.save()
+        self.business = Bussiness(business_name='Avocado business', business_email='kipro@gmail.com',business_desc='CADOS',user=self.user, business_hood=self.neighbourhood)
+    
+    def test_instance(self):
+        self.assertTrue(isinstance(self.business,Bussiness))
+
+    def test_save_business(self):
+        self.business.save_business()
+        biz = Bussiness.objects.all()
+        self.assertTrue(len(biz) > 0)
 
