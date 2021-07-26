@@ -88,7 +88,7 @@ def join_neighbourhood(request, id):
 @login_required(login_url='/accounts/login/')
 def single_neighbourhood(request, hood_id):
     neighbourhood = Neighbourhood.objects.get(id=hood_id)
-    # business = Bussiness.objects.filter(neighbourhood=id)
+    business = Bussiness.objects.filter(neighbourhood_id=hood_id)
     posts = Post.objects.filter(neighbourhood=neighbourhood)
     posts = posts[::-1]
     if request.method == 'POST':
@@ -98,13 +98,14 @@ def single_neighbourhood(request, hood_id):
             b_form.neighbourhood = neighbourhood
             b_form.user = request.user.profile
             b_form.save()
-            return redirect('single-hood', neighbourhood.id)
+            return redirect('single-hood',hood_id)
     else:
         form = BusinessForm()
     context = {
         'neighbourhood': neighbourhood,
         'form': form,
         'posts': posts,
+        'business': business,
 
     }
     return render(request, 'single_hood.html', context)
