@@ -68,7 +68,7 @@ class BusinessTestClass(TestCase):
         self.neighbourhood = Neighbourhood(
             hood_name="Roysa", hood_location="Nairobi", admin=self.user, hood_description='hood of hoods')
         self.neighbourhood.save()
-        self.business = Bussiness(business_name='Avocado business', business_email='kipro@gmail.com',business_desc='CADOS',user=self.user, business_hood=self.neighbourhood)
+        self.business = Bussiness (business_email='kipro@gmail.com',name='Avocado business',neighbourhood_id ="23")
     
     def test_instance(self):
         self.assertTrue(isinstance(self.business,Bussiness))
