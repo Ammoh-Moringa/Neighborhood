@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
 # Create your views here.
-@login_required(login_url='/accounts/login/')
 def index(request):
     all_hoods = Neighbourhood.objects.all()
     all_hoods = all_hoods[::-1]
