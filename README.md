@@ -65,7 +65,7 @@ On the localhost navigate to admin where all the posts and authentications are m
 
 
 ## License
-The project is under the [MIT](licence) license.
+The project is under the [MIT](license) license.
 
 ### live site
 
