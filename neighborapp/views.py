@@ -1,5 +1,5 @@
 from neighborapp.models import Bussiness, Neighbourhood, Post, Profile
-from neighborapp.form import BusinessForm, NeighbourHoodForm, ProfileForm,  SignUpForm, UserUpdateForm
+from neighborapp.form import BusinessForm, NeighbourHoodForm, PostForm, ProfileForm,  SignUpForm, UserUpdateForm
 from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
@@ -88,9 +88,9 @@ def join_neighbourhood(request, id):
 @login_required(login_url='/accounts/login/')
 def single_neighbourhood(request, hood_id):
     neighbourhood = Neighbourhood.objects.get(id=hood_id)
-    # business = Bussiness.objects.filter(neighbourhood=neighbourhood)
+    # business = Bussiness.objects.filter(neighbourhood=id)
     posts = Post.objects.filter(neighbourhood=neighbourhood)
-    # posts = posts[::-1]
+    posts = posts[::-1]
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         if form.is_valid():
@@ -104,7 +104,8 @@ def single_neighbourhood(request, hood_id):
     context = {
         'neighbourhood': neighbourhood,
         'form': form,
-        'posts': posts
+        'posts': posts,
+
     }
     return render(request, 'single_hood.html', context)
 
@@ -116,4 +117,39 @@ def leave_neighbourhood(request, id):
     messages.success(
         request, 'Success! You have succesfully exited this Neighbourhood ')
     return redirect('index')
+
+
+@login_required(login_url='/accounts/login/')
+def create_post(request, hood_id):
+    neighbourhood = Neighbourhood.objects.get(id=hood_id)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.neighbourhood = neighbourhood
+            post.user = request.user.profile
+            post.save()
+            messages.success(
+                    request, 'You have succesfully created a Post')
+            return redirect('single-hood', neighbourhood.id)
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login/')
+def search_business(request):
+    if request.method == 'GET':
+        name = request.GET.get("title")
+        results = Bussiness.objects.filter(name__icontains=name).all()
+        print(results)
+        message = f'name'
+        context = {
+            'results': results,
+            'message': message
+        }
+        return render(request, 'search_results.html', context)
+    else:
+        message = "You haven't searched for any business"
+    return render(request, "search_results.html")
 

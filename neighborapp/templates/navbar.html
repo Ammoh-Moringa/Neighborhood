@@ -176,13 +176,10 @@
 
 				</li>
 			</ul>
-			<form class="navbar-form form-inline navbar-right ml-auto" role="search" action=""
-				style="width:auto">
-				<div class="input-group search-box">
-					<input type="text" class="form-control" placeholder="Search Projects by title" name="title"
-						style="height:38px;">
-					<span class="input-group-btn">
-						<button type="submit" class="btn btn-primary"><span>Search</span></button>
+			<form class="form-inline d-flex justify-content-center md-form form-sm active-green-2 mt-2" action="{% url 'search' %}" method="get">
+				<input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search Business" aria-label="Search" name="title">
+				<button class="btn btn-outline bg-light btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search text-danger" aria-hidden="true"></i></button>
+		</form>
 					</span>
 				</div>
 			</form>
